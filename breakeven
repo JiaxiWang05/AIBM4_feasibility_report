@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+
+# Break-even diagram values
+fixed_costs = 45000  # Total estimated cost for buyer
+variable_cost_per_unit = 15000  # Estimated variable cost per unit (approx. total parts cost for mover)
+selling_price_per_unit = 61700  # Revenue per unit based on market aim
+
+# Calculating break-even point
+break_even_units = fixed_costs / (selling_price_per_unit - variable_cost_per_unit)
+
+# Generate units (x-axis) and total costs/revenue (y-axis)
+units = list(range(0, int(break_even_units * 2) + 1))
+total_costs = [fixed_costs + variable_cost_per_unit * unit for unit in units]
+total_revenue = [selling_price_per_unit * unit for unit in units]
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(units, total_costs, label="Total Costs", linestyle="--")
+plt.plot(units, total_revenue, label="Total Revenue", linestyle="-.")
+plt.axvline(break_even_units, color='gray', linestyle=':', label=f"Break-even Point ≈ {break_even_units:.2f} units")
+plt.axhline(fixed_costs, color='red', linestyle=':', label=f"Fixed Costs (£{fixed_costs})")
+
+# Labels and Title
+plt.title("Break-even Analysis for Automated Material Mover Project")
+plt.xlabel("Units Produced and Sold")
+plt.ylabel("Cost and Revenue (£)")
+plt.legend()
+plt.grid(True)
+plt.show()
