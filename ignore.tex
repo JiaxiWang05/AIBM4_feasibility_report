@@ -1,0 +1,248 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\geometry{a4paper, margin=1in}
+\setlength{\parindent}{0pt}
+\setstretch{1.5}
+
+
+
+% -------------------------------------------------------------
+%
+% LaTeX UG Workshop - Engineering MEng/BEng
+% School of Engineering - The University of Edinburgh
+% www.eng.ed.ac.uk / www.ed.ac.uk
+%
+% -------------------------------------------------------------
+% ver 4.5, Oct-2024  (c) F. Teixeira-Dias, Maisie Edwards-Mowforth
+%
+% Acknowledgements: Anna Garcia-Teruel, James Young, Sam Thompson, 
+%                   Katie McGill, Neil Buchanan 
+% -------------------------------------------------------------
+%
+% NOTE: Please note that this is NOT an official thesis 
+% template. You should check your thesis/dissertation handbook 
+% to ensure all structure and format requirements are met.
+%
+% -------------------------------------------------------------
+%
+% Suggested reading before you start writing your dissertation:
+% T. Bruce, W.J. Easson, "Structure of a technical report", The
+% University of Edinburgh, 2012
+%
+% -------------------------------------------------------------
+\documentclass[11pt,                                          % Main text font size
+               a4paper,                                       % Paper size
+               openright,                                     % Chapters start on odd pages (right)
+               twoside]{report}                               % Print two-sided, LaTeX 'report' template
+
+% -------------------------------------------------------------
+% PACKAGES - Only load if necessary / used
+% -------------------------------------------------------------
+\usepackage{microtype}                                        % Tweak font spacing for aesthetics
+\usepackage{cmbright}                                         % SS font - Comment this line for LaTeX base font
+\usepackage[utf8]{inputenc}                                   % Includes letters with accents
+\usepackage[T1]{fontenc}                                      % 8-bit encoding with 256 glyphs
+\usepackage[colorlinks=true, allcolors=black]{hyperref}       % Hyper-references in PDF (e.g. urlcolor=blue)
+\usepackage{fancyhdr}                                         % Headers and footers
+\usepackage{subfigure}                                        % Multiple figures environment
+\usepackage{amsmath}                                          % Standard maths
+\usepackage{amssymb}                                          % Standard maths symbols
+\usepackage{graphicx}                                         % Include graphics
+\usepackage{booktabs}                                         % Professional tables
+\usepackage[english]{babel}                                   % Babel and language definitions
+\usepackage[a4paper,                                          % Paper size
+            top = 35mm,                                       % Top margin
+            bottom = 30mm,                                    % Bottom margin
+            left = 35mm,                                      % Left margin
+            right = 25mm]{geometry}                           % Right margin
+ 
+\usepackage[page,toc,titletoc,title]{appendix}                % Include appendixes
+\usepackage{csquotes}                                         % For inline and display quotations
+\usepackage{lipsum}                                           % Generate automatic text - Lorem Ipsum
+\usepackage{moreverb}                                         % Output for word and character count
+\usepackage{tcolorbox}                                        % Coloured boxes
+\usepackage{xcolor}                                           % Advanced colours
+\usepackage{soul}                                             % Highlight text and other text things
+\usepackage{caption}                                          % Manage captions in floats
+\usepackage{chemfig,chemformula}                              % Use chemistry formulae
+\usepackage{pgfgantt}                                         % Use a Gantt chart
+\usepackage{pdflscape}                                        % Landscape pages
+\usepackage{cite}                                             % Compressed and sorted lists of citations
+\usepackage{listings}                                         % Displayed code
+\usepackage{siunitx}                                          % Easy unit control
+
+% -------------------------------------------------------------
+% USER VARIABLES AND DEFINITIONS                              % EDIT THIS SECTION
+% -------------------------------------------------------------
+%\newcommand{}{}
+\newcommand{\theTitle}{My final year dissertation}            % Thesis title
+\newcommand{\runningTitle}{Short thesis title}                % Short title for headers
+\newcommand{\theAuthor}{A.U.  \textbf{Thor}}                  % Author name
+\newcommand{\theSupervisor}{S.U. Pervisor}                    % Name of supervisor
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\al}{\alpha}
+
+\definecolor{mygreen}{RGB}{28,130,0}                          % Define your own colours
+\definecolor{ocre}{RGB}{45,105,145} 
+\definecolor{barblue}{RGB}{153,204,254}                       % Used in Gantt chart
+\definecolor{groupblue}{RGB}{51,102,254}                      % Used in Gantt chart
+\definecolor{linkred}{RGB}{165,0,33}                          % Used in Gantt chart
+
+\captionsetup[table]{skip=6pt}                                % Gap between captions and tables
+\graphicspath{{Images/}}                                      % Path to folder where pictures are stored
+\makenomenclature                                             % Create a nomenclature
+\setlength{\nomlabelwidth}{10mm}                              % Set width of nomenclature label
+\setlength{\headheight}{14pt}                                 % Minimum hadhight length
+
+% -------------------------------------------------------------
+% NOTATION AND ACRONYMS (DEFINITIONS)
+% -------------------------------------------------------------
+\newcommand{\notitem}[2]{{$#1$} & {~ -- ~ #2}}
+\newcommand{\acritem}[2]{{#1} & {~ -- ~ #2}}
+
+% -------------------------------------------------------------
+% HEADERS AND FOOTERS
+% -------------------------------------------------------------
+\fancyhead[LE,RO]{\slshape\nouppercase{\leftmark}}            % Header right-odd and left-even: chapter title
+\fancyhead[CE,CO]{}                                           % Header centre-odd and centre-even: empty
+\fancyhead[LO,RE]{\slshape\nouppercase{\rightmark}}           % Header left-odd and right even: section title
+\fancyfoot[LE,RO]{\thepage}                                   % Footer right-odd and left-even: page number
+%\fancyfoot[LE,RE]{\thepage}                                  % Footer right-odd and left-even: page number
+%\fancyfoot[R]{\thepage}                                      % Footer right-odd and left-even: page number
+\fancyfoot[CE,CO]{}                                           % Footer centre-odd and centre-even: empty
+\fancyfoot[LO,RE]{\theAuthor}                                 % Footer left-odd and right-even: author name
+%\fancyfoot[L]{\theAuthor}                                    % Footer left-odd and right-even: author name
+
+% ------------------------------------------------------------------
+% DATA PLOTTING AND SETTINGS
+% ------------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc,backgrounds,matrix}
+\usetikzlibrary{shapes,arrows,shapes.multipart}                % For flowcharts, diagrams etc
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}                                    % Generates table from .csv
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shapes,positioning,intersections,quotes,fit,patterns}
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat = 1.15}
+\pgfplotsset{
+        tick scale binop=\times,                              % Use times sign for scale/axis
+        tick label style={font=\footnotesize},                % Font size for tick labels
+        label style={font=\footnotesize},                     % Font size for axis labels
+        legend style={draw=none, legend cell align=left, font=\footnotesize}, % Legend style definitions
+        grid style={line width=.1pt, draw=gray!10},           % Minor gridlines settings
+        major grid style={line width=.2pt,draw=gray!50},      % Major gridline settings
+        grid=both,                                            % Gridline selection
+        minor tick num = 5,                                   % Number of minor ticks
+        ymajorgrids=true, xmajorgrids=true,                   % Activate X, Y, grids
+        every x tick scale label/.style={at={(xticklabel cs:0.9,5pt)},right,inner sep=0pt},
+}
+\usepgfplotslibrary{groupplots}                               % For group plots
+\usetikzlibrary{pgfplots.groupplots}                          % For group plots 
+
+
+% -------------------------------------------------------------
+% WORD AND CHARACTER COUNT OUTPUT (STATS AT END OF DOCUMENT)
+% -------------------------------------------------------------
+\immediate\write18{texcount -inc -incbib -sum=1,1,1,1,1,1,1 LaTeX_Workshop.tex 
+   > /tmp/wordcount.tex}                                      % Activate word count script
+\newcommand\wordcount{\verbatiminput{/tmp/wordcount.tex}}     % Create \wordcount command
+%TC:group tabular 0 1
+%TC:group table 0 1
+
+% -------------------------------------------------------------
+% START DOCUMENT CONTENT
+% -------------------------------------------------------------
+\begin{document}                                              % Start document
+
+% -------------------------------------------------------------
+% COVER PAGE
+% -------------------------------------------------------------
+\begin{titlepage}                                             % Create cover page
+\pagestyle{empty}                                             % No headers or footers on cover
+\centering                                                    % Centre all contents on cover page
+\includegraphics[width=0.7\textwidth]{UoD_Engineering.jpg} \\  
+\vspace{60mm}                                                 % Vertical space
+\hrule\vspace{5mm}                                       % Horizontal rule above title
+ 
+{\LARGE \textbf{\textcolor{mygreen}{AIBM4\ easibility\report}}} \\[5pt] % Escaped underscores and added spacing
+
+
+\vspace{5mm}\hrule\vspace{20mm}                               % Horizontal rule below title
+% Title and author block
+\noindent\rule{\textwidth}{1pt} \\[10pt]  % Horizontal rule
+
+{\large Anna, Abi, Will, Jiaxi, Henry, Louis} \\ \vspace{2mm} % The author names
+{\large (Supervisor: Bill)} \\[10pt] % The supervisor
+\noindent\rule{\textwidth}{1pt} \\  % Horizontal rule below
+
+\vfill                                                        % Fill space down to bottom of page
+{\small The University of Durham \\ \today}                % University and date at bottom
+\cleardoublepage                                              % Go to next odd page
+\end{titlepage}
+
+% -------------------------------------------------------------
+% FRONTMATTER
+% -------------------------------------------------------------
+\pagenumbering{roman}                                         % Roman page numbering for preamble
+\setcounter{page}{1}                                          % Start page counter
+\input{Chapters/Front_Matter.tex}                             % Call frontmatter file
+\tableofcontents                                              % Add table of contents
+
+
+
+\appendix
+\section*{Appendix E: Writing a Feasibility Report}
+
+The feasibility report is an integral part of many, if not all, engineering projects. Before a commercial or a research project can proceed, it must be established that the intentions of the project are realisable, that the goal is realistic, and that the project is likely to make commercial sense. The proposed direction for the project must also be described. The feasibility report must, therefore, encapsulate all of these in a short format. It must be to the point and persuasive.
+
+\subsection*{Format}
+The following parts are normally required in reports presented in industry and commerce. This general pattern should be adhered to using a 12-point standard font, 1.5 line spacing, and moderate margins.
+
+\subsection*{Aim}
+The report should be targeted at a "project sponsor" – typically an engineering manager with commercial knowledge, who has the authority to make a go/no-go decision for the project. It should contain both technical and commercial information, and should attempt to persuade this customer of the feasibility (or otherwise) of a solution. It must, therefore, provide sufficient information for the project owner to make the decision to continue the project or to "cut their losses" and abandon the project.
+
+\subsection*{Content}
+The content of the report may vary considerably between projects, but the following is a guide to appropriate content:
+
+\begin{enumerate}
+    \item \textbf{Title Sheet \& Executive Summary}
+    \item \textbf{Introduction and Project Scope}
+    \begin{itemize}
+        \item What is the problem that you’re attempting to solve?
+        \item What is the budget to which you expect to work?
+        \item State the problem by defining the "User Requirement Specification" (URS).
+    \end{itemize}
+    \item \textbf{Concepts}
+    \begin{itemize}
+        \item Include a number of possible concepts with sufficient detail.
+        \item Consider the strengths and weaknesses of each concept.
+        \item One way of doing this is to rate each concept against the priorities set out in the URS and tabulate the results numerically.
+    \end{itemize}
+    \item \textbf{Chosen Solution(s)}
+    \begin{itemize}
+        \item Define which solution(s) should be taken forward and investigated, and why.
+        \item Include the expected cost of the product and your basis for suggesting that cost.
+        \item For larger projects, present a commercial business case, including finance and marketing information for the chosen solution.
+    \end{itemize}
+    \item \textbf{Recommendations / Conclusions}
+    \begin{itemize}
+        \item In light of your initial studies, should the URS be modified?
+        \item Should the project proceed?
+        \item Summarise your proposal/analysis in a concise format (e.g., one sentence).
+    \end{itemize}
+    \item \textbf{Project Schedule}
+    \begin{itemize}
+        \item Summarise what your group intends to do and when you intend to do it.
+        \item The schedule will usually be in the form of a Gantt chart, including key dates such as holidays, deadlines, and presentations.
+        \item The timings of your project plan may change, but the initial project plan provides a foundation.
+    \end{itemize}
+    \item \textbf{References}
+    \item \textbf{Appendices}
+\end{enumerate}
+
+\end{document}
