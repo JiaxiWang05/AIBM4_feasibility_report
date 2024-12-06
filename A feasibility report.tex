@@ -15,6 +15,7 @@
 \usepackage{soul}
 \usepackage{wrapfig}
 \usepackage{placeins}
+\usepackage{float}
  
 
 
@@ -34,7 +35,7 @@
 
 
 \usepackage{url}
-\geometry{a4paper, margin=1in}
+\geometry{a4paper, margin=0.7in }
 \setlength{\parindent}{0pt}
 \setstretch{1.5}
 \usepackage{setspace}
@@ -64,6 +65,7 @@
 \pagenumbering{arabic} % Ensure Arabic numbering starts from the first page
 
 
+
  
 % -------------------------------------------------------------
 % COVER PAGE
@@ -75,7 +77,7 @@
 \vspace{10mm}
 
 % Title and subtitle
-{\LARGE \textbf{Feasibility Report for 19-AIBM4 Autonomous Material Mover}} \\[10pt]
+{\LARGE \textbf{Feasibility Report for Group 19-AIBM4 Autonomous Material Mover}} \\[10pt]
 
 \vspace{5mm}\hrule\vspace{0mm}
 
@@ -88,8 +90,8 @@
 \vspace{10mm}
 
 % Title and author block
-{\large \textbf{Co-Authors: }\textit{Abi Wright, Anna Wigmore, Henry Billing, Jiaxi Wang, Louis Nangle, William Woodward}} \\ \vspace{1mm}
-{Supervisors:\textit{ Aissa Ikhlef, Bill Maxwell}} \\[10pt]
+{\large \textbf{Co-Authors: }\textit{A Wright, A Wigmore, H Billing, J Wang, L Nangle, W Woodward}} \\ \vspace{1mm}
+{Supervisors:\textit{ Dr Aissa Ikhlef, Bill Maxwell}} \\[10pt]
 {\small The University of Durham \\ \today}
 \end{titlepage}
 
@@ -113,20 +115,25 @@
 % -------------------------------------------------------------
 % 2. Introduction and Project Scope
 % -------------------------------------------------------------
+\section{Executive Summary}
+This feasibility report looks into the development of an Automated Material Mover (AIBM4), which aims to transport materials autonomously within a factory environment. This would eliminate the need for manual handling of goods, improve productivity and ensure a safer and more sustainable working environment. 
+\par Through an iterative design process, we chose a three-wheeled automated forklift design that integrates differential steering around a central axle for maximum manoeuvrability and tape sensing technology for precise movement within a factory environment. To make this design contemporary and sustainable, the body and forks will be made out of steel due to its high reconcilability, while the castor wheel will be made from a pre-consumer nylon, and we will use airless tyres to improve durability and reduce waste.
+\par Engineering calculations validate are designs structural integrity and feasibility as well as ensuring compliance with ISO 3691-4  standards. An in-depth cost analysis demonstrates that this automated guided vehicles (AGVs) are financially viable over conventional manual forklifts, due to significant savings in labour and operating costs over time. A break even analysis determines that only 39 units need to be sold to generate a profit, with over 1.4 million forklifts\cite{Statista} being sold worldwide in 2022 year and sales increasing year on year this is very achievable.
+\par An adaptable factory layout design has been included which has been optimised for AGV operation, however the material mover has been designed to fit into the majority of modern-day factories. We have also conducted a risk assessment to mitigate any risks as well as created a Gantt chart which to determine that the design process will be finished by the end of March 2025.
+\par This report demonstrates the technical, economic and environmental upper hand that an automated material mover can be provide in a modern factory setting.
+
 \section{Introduction}
-\subsection{Overview}
-This feasibility report aims to look into the development of the Automated Material Mover (AIBM4), which aims to transport materials autonomously within a factory environment. This would eliminate the need for manual handling of goods as well as enhancing productivity and ensuring a safer and more sustainable working environment.
-\subsection{What is the problem that you’re attempting to solve?}
+\subsection{What is the problem that we are attempting to solve?}
 Efficient material handling is essential in modern manufacturing, but conventional forklifts still require manual operation. This project seeks to eliminate manual dependency by designing an autonomous material mover.
  
 \subsection{Issues with Conventional Manual Material Handling}
 
-Manual labour and forklifts have several key issues within factory environments such as:
+Manual labour and forklifts have several key issues within factory environments:
 
 \begin{itemize}
-    \item \textbf{Inefficiency:} Time lost due to the requirements of having human interactions, e.g., lunch breaks are required.
+    \item \textbf{Inefficiency:} Human workers require regular breaks, reducing productivity
     \item \textbf{Safety concerns:} Human error can lead to an increased likelihood of an accident as well as a higher chance of injuries.
-    \item \textbf{Cost:} Labour can be a very expensive cost, and for operations to continue 24 hours a day, this may require three shift workers.
+    \item \textbf{Cost:} Cost of labour is very large, and multiple shifts necessitates additional hiring costs.
     \item \textbf{Reliability:} Human error can lead to materials being moved to the wrong locations.
 \end{itemize}
 
@@ -170,89 +177,121 @@ Overall, these issues reduce productivity and compromise workplace safety.
 % -------------------------------------------------------------
 \section{Concepts}
 \subsection{Possible Concepts}
-Three design concepts were considered:
-\begin{enumerate}
-    \item A three-wheeled automated forklift with line-following sensors.
-    \item A four-wheeled heavy-duty material mover with obstacle detection.
-    \item A hybrid robotic arm integrated into a mobile platform for versatile handling.
  
-
- \begin{figure}[h!]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Simple_sketch_of_an_automated_forklift_robot_with_two_wheels_at_the_back_and_one_wheel_in_the_front.png}
-        \caption{Three wheel line following design}
-        \label{fig:three_wheel_line_flowing}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{anna&will's design (1).png}
-        \caption{Four wheel monorail design}
-        \label{fig:design_idea}
-    \end{minipage}
-\end{figure}
+\begin{enumerate}
+    \item A three-wheeled mover with magnetic tape sensors. This design utilises a compact three wheeled configuration to allow for maximum manoeuvrability in tight spaces. Due to its magnetic tape sensing technology it can accurately navigate predefined paths within a factory setting.
+    \item A four-wheeled mover on a monorail. This design uses a monorail to ensure extremely precise movement as well as a four wheel base which makes it very sturdy for lifting goods and transporting them quickly and efficiently.  
+    \item A six-wheeled mover with line-following sensors. Six wheels allows for superior stability and load-bearing capabilities. It would use differential steering for its central axis, with the other four wheels being caster wheels, to allow it to spin on the spot making it highly manoeuvrable and versatile.
+ \end{enumerate}
 
 \begin{figure}[h!]
     \centering
-    \begin{minipage}{0.48\textwidth}
-
-        \includegraphics[width=1\textwidth]{Louis's design.png}
-        \caption{Six wheel line following design}
-        \label{fig:louis_design}
+    % First image and its caption
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Simple_sketch_of_an_automated_forklift_robot_with_two_wheels_at_the_back_and_one_wheel_in_the_front.png}
+    \end{minipage}%
+    \hspace{0.01\textwidth}
+    % Second image and its caption
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{anna&will's design (1).png}
+    \end{minipage}%
+    \hspace{0.01\textwidth}
+    % Third image and its caption
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Louis' design without text.png}
     \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-      
-        \includegraphics[width=\textwidth]{finaldesign1.png}
-        \caption{Final design}
-        \label{fig:final_design}
+    \hspace{0.01\textwidth}
+    
+    % Captions below images
+    \vspace{0.5mm}  % Adds space between the images and captions
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \textbf{}Figure 2: Three wheel magnetic tape following design
+    \end{minipage}%
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \textbf{}Figure 3: Four wheel monorail design
+    \end{minipage}%
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \textbf{}Figure 4: Six wheel line following design %%  better to use   \caption{Final design} for automation :D   \label{fig:final_design}
     \end{minipage}
 \end{figure}
-
-
-\end{enumerate}
+ 
 
 \subsection{Strengths and Weaknesses}
-Each concept was evaluated against the URS. A summary of strengths and weaknesses is provided in Table \ref{tab:concept_evaluation}.
+Each concept was evaluated against the URS using a design decision matrix. A summary of this is provided in Table \ref{tab:concept_evaluation} below.
 
 
 \begin{table}[h!]
 \centering
 \caption{Concept Evaluation Matrix}
-\begin{tabular}{@{}lcc@{}}
+\begin{tabular}{@{}lccc@{}}
 \toprule
-\textbf{Criteria}      & \textbf{Concept 1} & \textbf{Concept 2} \\ \midrule
-Load Capacity          & High               & Medium             \\
-Navigation Efficiency  & Medium             & High               \\
-Cost                   & Low                & Medium             \\
-Ease of Maintenance    & High               & Low                \\ \bottomrule
+\textbf{Criteria}      & \textbf{Concept 1} & \textbf{Concept 2} &\hl{\textbf{Concept 3}} \\ \midrule
+Load Capacity          & High               & Medium              & Medium            \\
+Navigation Efficiency  & Medium             & High                & High              \\
+Cost                   & Low                & Medium              & Medium            \\
+Ease of Maintenance    & High               & Low                 & Low               \\ \bottomrule
 \end{tabular}
 \label{tab:concept_evaluation}
 \end{table}
+\FloatBarrier
 
 % -------------------------------------------------------------
-% 4. Chosen Solution(s)
-% -------------------------------------------------------------
-\section{Chosen Solution(s)}
+% 4. Chosen Solution
+% ------------------------------------------------------------
+\section{Chosen Solution}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{finaldesign1rb.png}  % Adjusted to 30% of the line width
+    \caption{Final design}
+    \label{fig:x}
+\end{figure}
 
-\subsection{Proposed Solution}
-The three-wheeled heavy-duty material mover, is chosen due to its balance of cost, efficiency, and reliability. 
-The body and forks are likely to be made from steel because it has the highest recycling rate among all materials used in construction and engineering  \cite{baker2023}
-The drive wheels.  
 
+
+The initial design that was chosen was Concept one, with some changes to improve performance. For greater manoeuvrability, a counterweight design was chosen, removing the frontmost wheels to allow the lifter to rotate about it's centre.
+In order to improve sustainability, the body and forks are likely to be made from steel because it has the highest recycling rate among all materials used in construction and engineering \cite{baker2023}. The castor wheels can be made of high-quality pre-consumer nylon (from the waste of polyester production) \cite{eco2022} and the drive wheels can be airless tires, as it reduces the amount of rubber that goes into landfills and improves fuel efficiency \cite{ImperialTyres}.
+
+\subsection {Stress and Deflection Calculations}
+Assuming the fork is a beam of uniform cross section fixed at the left end to the forklift, it can be modelled as shown in {figure 6}.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fork as a beam diagram.png}
+    \caption{Diagram showing the force diagram of a singular fork.}
+    \label{fig:x}
+\end{figure}
+This is using a factor of safety of three for the maximum load, as specified by ISO-2330 for the prototyping of forklift forks. (INSERT REFERENCE)
+Thus using Macauley's method the equation for deflection of a steel-203 fork with E = 190GPa (INSERT REFERENCE), height (h) = 40mm and width (b) =100mm (INSERT REFERENCE) is given by:
+\begin{equation}
+   \nu = \frac{3}{304000} \left( \frac{-16186.5}{2}x^2 + \frac{29430}{6}x^3 - \frac{26755}{24}x^4 \right)
+\end{equation}
+Therefore maximum deflection is at \(x = 1.1 \, \text{m}\), which is \(\nu = -4.83 \, \text{cm}\).
+For fatigue, following ISO-2330 standards a cyclic stress amplitude of 1.655MPa was obtained using equation (2).
+\begin{equation}
+   \text{Cyclic Stress Amplitude} = \left (\frac{Force}{Area} \right)
+\end{equation}
+The obtained value is smaller than the minimum fatigue limit of \(175 \text{MPa}\) so no cracking due to fatigue will occur.
+\subsection{Centre of Mass calculations}
+In a counterbalance forklift design, the centre of mass is kept between the front and rear wheels through a large counterbalance positioned far back. Normally the mass of the battery contributes to this. In order to determine whether a design  is  safe from tipping, several calculations must be performed.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Tipping Calculations.png}
+    \caption{Diagram showing mass distribution in a counterbalance forklift, and free body diagram of the same}
+    
+\end{figure}
 \subsection{Expected Cost}
-
-
 
 {The estimated cost of the product \cite{P. Hinz} is £60,000, and this covers:}
 \begin{itemize}
-    \item All the hardware for the autonomous material mover and its implementation into the factory.
+    \item All the hardware for the autonomous material mover 
     \item All of the software acquisition and development for navigation, obstacle detection, and task automation.
     \item The implementation of the system into a conventional factory; however, this will likely differ on a site-to-site basis.
 \end{itemize}
-
 
 \begin{table}[h!]
     \centering
@@ -269,41 +308,34 @@ The drive wheels.
     \caption{Breakdown of Expected Costs for the Autonomous Material Mover}
     \label{tab:expected_costs}
 \end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{breakeven.png}  % Adjust width as needed
+    \caption{Breakeven Point Analysis}
+    \label{fig:breakeven}
+\end{figure} 
+
 \FloatBarrier
 \subsection{Cost Comparison for a Customer}
-Whilst this product may seem expensive at first to potential customers, it has distinct financial and logistical advantages over manual forklifts. A 2-ton manual stacker truck can cost anywhere from £8000 for a standing operator push model, to £25000 for a full truck. In addition to the cost of the stacker there is the cost of paying operators. 
+Whilst this product may seem expensive at first to potential customers, it has distinct financial and logistical advantages over manual forklifts. A 2-ton manual stacker truck can cost anywhere from £8000 for a standing operator push model, to over £25000 for a counterbalance truck. In addition to the cost of the stacker there is the cost of paying operators. 
 This soon adds up, with hourly minimum wage in the UK being £11.44, this being the largest factor in running costs. An automated stacker eliminates this expense, whilst also being able to work continuously with only breaks for charging.
 
 It should be considered that automated forklifts do on average move slower than regular manually driven forklifts. This means that it takes around 1.3-1.5 automated forklifts to do the same work as a single manned truck \cite{Pastor-Tella2024}. 
 Taking these things into consideration, the following table assumes a factory using two manned forklifts, and how these costs would compare to three AGVs.
+ 
+
 \begin{figure}[h!]
     \centering
-     \includegraphics[width=1\textwidth]{CostComparisonGraphUpdatedV2.png}
+     \includegraphics[width=0.75\textwidth]{CostComparisonGraphUpdatedV2.png}
         \caption{Cost Comparison: AGVs vs Manned Forklifts}
          \label{fig:timeline}
 \end{figure}
 \FloatBarrier
-Cost per unit taken as £60,000 for an AGV, compared with £20,000 for a manual forklift. From the graph we can see that after 420 days of operation the three AGV forklifts become more economical in comparison to the two manually operated forklifts.
+Cost per unit taken as £60,000 for an AGV, compared with £20,000 for a manual forklift. From the graph we can see that after 420 days of operation the three AGV forklifts become more economical in comparison to the two manually operated forklifts. The full cost comparison information is shown in Table 3.
 
 
 
- 
-
-\section*{Breakeven Analysis: AGVs vs. Manual Forklifts}
-
- \begin{itemize}
-    \item \( C_0 \): Total Initial Cost (purchase, installation, training.)
-    \item \( C_1 \): Annual Operating Costs (maintenance, energy, insurance.)
-    \item \( S \): Annual Savings (labor cost savings)
-    \item \( T_{\text{breakeven}} \): Breakeven Period (in years)
-\end{itemize}
-
-\section{Step 5: Return on Investment (ROI)}
-To calculate the Return on Investment (ROI) after the breakeven period 
-\[
-\text{ROI} = \frac{S \times (T - T_{\text{breakeven}})}{C_0} \times 100
-\]
- 
 \begin{table}[htbp]
 \centering
 \begin{tabular}{|l|l|l|}
@@ -312,82 +344,60 @@ To calculate the Return on Investment (ROI) after the breakeven period
 \textbf{Initial Cost per Unit}          & £20,000                             & £60,000                               \\ \hline
 \textbf{Number of Units}                & 2                                    & 3                                     \\ \hline
 \textbf{Total Initial Cost}             & 2 × £20,000 = £40,000               & £180,000                \\ \hline
-\textbf{Annual labour cost per forklift }& £11.07× 16×365 = £64,648.80      & £0                                    \\ \hline
-\textbf{Total Annual Labor Cost (16 hours a day)}        & £129,297.6    & £0                                    \\ \hline
- \textbf{Electricity cost per year (25.46p per kWh) }& £14,868&£22,302\\\hline  
+\textbf{Annual labour cost per forklift }& £11.44× 16×365 = £66,810      & £0                                    \\ \hline
+\textbf{Total Annual Labor Cost (16 hours a day)}        & 2 x £66,810 = £129,297.6    & £0                                    \\ \hline
+ \textbf{Electricity cost per year (25.46p per kWh) } & £14,868&£22,302\\\hline  
  
-\textbf{Total Annual Operating Cost}    & £144,165& £22,302\\ \hline
+\textbf{Total Annual Operating Cost}    & £148,487& £22,302\\ \hline
  
   
 \end{tabular}
 
-\caption{Cost Breakdown for Automated Forklifts}
+\caption{Cost Breakdown for Manual and Automated Forklifts}
 \end{table}
 
 
-
- (assuming )
-
-
- \begin{figure}[h!]
-    \centering
-    \includegraphics[width=1\textwidth]{breakeven.png}  % Adjust width as needed
-    \caption{Breakeven Point Analysis}
-    \label{fig:breakeven}
-\end{figure} 
-
  
 
-\subsection*{Breakeven Calculation (with Labor Savings)}
 
- 
-
- 
- 
-
- 
- 
-
-\subsection*{Breakeven Point Plot}
-
-  
-
-
-\subsection{Factory design}
-
+\FloatBarrier
 \begin{figure}[ht]
+\subsection{Factory layout }
 \centering
-\begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{factory layout1.png}
-    \caption{Factory design}
-    \label{fig:targeted working condition}
-\end{minipage}%
-\hfill
-\begin{minipage}{0.45\textwidth}
-    \centering
-    \begin{tabular}{|l|l|}
-    \hline
-    \textbf{Dimension}      & \textbf{Value}                \\ \hline
-    \textbf{Floor Area}      & 10,628 sq ft (989.8 m²)        \\ \hline
-    \textbf{Eaves Height}    & 6 meters (19.7 feet)           \\ \hline
-    \textbf{Width}           & ~100 feet (30.5 meters)        \\ \hline
-    \textbf{Length}          & ~106 feet (32.3 meters)        \\ \hline
-    \end{tabular}
-    \caption{ Dimensions for Unit 5, Aycliffe Business Park\cite{mileway_hurworth_2024}}
-\end{minipage}
+\includegraphics[width=1\linewidth]{factory layout1.png}
+\caption{Factory design layout}
+\label{fig:factory_layout}
 \end{figure}
 
-
-
-Based on the information from the EG Propertylink listing for Unit 5, Hurworth Road, Aycliffe Business Park\cite{mileway_hurworth_2024}, the CAD factory layout design integrates the key features and constraints of the property.  Line-following forklifts rely on predefined paths marked by visible or magnetic lines (often in the form of tape or sensors) on the floor, the layout was optimized to include narrower aisles suitable for line-following AGVs,  ensuring they have sufficient room to follow the lines without obstruction which take full advantage of the 6-meter eaves height . 
-
-Clearly defined line-following paths throughout the facility marked with high-visibility lines (magnetic strips), guide the forklifts through the warehouse, directing them to storage zones, picking locations, and loading bays.A dedicated area for charging stations was incorporated into the layout . Automated docking stations be strategically located near the production and storage zones, ensuring AGVs can easily return to their charging points without disrupting material handling operations. 
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{blender_animation.png} % Replace with your Blender animation image
+        \caption{Blender Animation}
+        \label{fig:blender_animation}
+    \end{minipage}
+    \hspace{0.05\linewidth}
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{factory layout dimension.png}
+        \caption{Factory design layout}
+        \label{fig:factory_layout}
+    \end{minipage}
+\end{figure}
 
  
- \section{Risk assessment }
+
+
+Based on the information from the EG Propertylink listing for Unit 5, Hurworth Road, Aycliffe Business Park \cite{mileway_hurworth_2024}, the CAD factory layout design integrates the key features and constraints of the property.  Line-following forklifts rely on predefined paths marked by visible or magnetic lines (often in the form of tape or sensors) on the floor. The layout was optimized to include narrower aisles suitable for line-following AGVs,  ensuring they have sufficient room to follow the lines without obstruction which take full advantage of the 6-meter eaves height.
+
+Clearly defined line-following paths throughout the facility marked with high-visibility lines (magnetic strips), guide the forklifts through the warehouse, directing them to storage zones, picking locations, and loading bays. A dedicated area for charging stations was incorporated into the layout . Automated docking stations were strategically located near the production and storage zones, ensuring AGVs can easily return to their charging points without disrupting material handling operations. 
+
+ 
+
  
 \begin{figure}[h!]
+ \section{Risk assessment }
     \centering
     \includegraphics[width=0.85\textwidth]{Risk1.png}
     \includegraphics[width=0.85\textwidth]{Risk2.png}
@@ -398,52 +408,47 @@ Clearly defined line-following paths throughout the facility marked with high-vi
 \end{figure}
 \FloatBarrier
 
-
-% -------------------------------------------------------------
-% 5. Recommendations / Conclusions
-% -------------------------------------------------------------
-\section{Recommendations / Conclusions}
-\begin{itemize}
-    \item Modify the URS to include advanced collision-avoidance features.
-    \item Proceed with the development of the four-wheeled design.
-    \item The project has high feasibility, promising an ROI within 2 years.
-\end{itemize}
-
+ 
 
 % -------------------------------------------------------------
 % 6. Project Schedule
 % -------------------------------------------------------------
 \section{Project Schedule}
-\subsection{Gantt Chart}
-In order to plan out the schedule throughout the project, a Gantt Chart was created to plan out the hours worked every week, working around holidays and other module deadlines. This ensures no tasks are ignored or missed out, giving them ample time to be completed. Additionally, leaving contingency hours caters for scope creep and any drastic changes that need to be made and also giving flexibility to change tasks and the hours put into them. 
 
-    The dynamic Gantt Chart in \hl{Figure X}, made using Microsoft Excel, shows how complete each task is, and helps to visualise which tasks are on track, ahead or behind schedule. 
+In order to plan out the schedule throughout the project, a Gantt Chart was created to plan out the hours worked every week, ensuring no tasks are ignored or missed out, giving them ample time to be completed. Additionally, leaving contingency hours caters for scope creep and any drastic changes that need to be made and also giving flexibility to change tasks and the hours put into them. The dynamic Gantt Chart in  figure \ref{fig:x}, made using Microsoft Excel, shows how complete each task is, and helps to visualise which tasks are on track, ahead or behind schedule. 
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{dynamicganttchart.png}
+ \subsection{Gantt Chart}
+    \includegraphics[width=1\textwidth]{BIGGER Gantt chart.png}
     \caption{Dynamic Project Gantt Chart}
     \label{fig:x}
 \end{figure}
 
-The planning Gantt Chart, \hl{Figure Y}, showcases the weekly hours expected to be put into tasks and helps to ensure a balanced workload throughout the project. It also allows foresight for deadlines and other departmental commitments so that the workload can be planned around these accordingly. As shown in the Gantt Chart below, the majority of first term was planned around choosing a feasible design for the material mover and the research and drawings for this, as well as the factory layout the mover would work in. This provides a strong basis for the remainder of the project which focuses on CAD, software proof of concept and other simulations. This plan also allows for scope creep, having 135 contingency hours, and so means the project has ample time to be complete before the Final Project Report.
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{even bigger gantt chart.png}
+    \includegraphics[width=1\linewidth]{Gantt plan final.jpg}
     \caption{Planning Gantt Chart}
     \label{fig:y}
 \end{figure}
-\subsection{Meeting Minutes}
-% -------------------------------------------------------------
-% 7. References
-% -------------------------------------------------------------
+The planning Gantt Chart, figure \ref{fig:y}, showcases the weekly hours expected to be put into tasks and helps to ensure a balanced workload throughout the project. It also allows foresight for deadlines and other departmental commitments so that the workload can be planned around these accordingly. The majority of first term was planned around choosing a feasible design for the material mover and the research and drawings for this, as well as the factory layout the mover would work in. This provides a strong basis for the remainder of the project which focuses on CAD, software proof of concept and other simulations. This plan also allows for scope creep, having 135 contingency hours, and so means the project has ample time to be complete. 
 
- \newpage
-%\bibliographystyle{unsrt}
-%\bibliography{reference}
-
+\begin{figure}[h!]
+ \subsection{Meeting Minutes}
+    \includegraphics[width=1\textwidth]{HalloweenMinutes1.png}
+    \caption{Meeting minutes from 31/10/24}
+    \label{fig:x}
+\end{figure}
+  
+Meeting minutes are a core component for the project management of this process. They are a detailed record of all discussions, decisions and assigned tasks. They are taken by the secretary every meeting, which is at least biweekly ensuring consistent and efficient collaboration. This ensures that all topics of discussion are covered and that appropriate tasks are assigned regularly. Maintaining detailed minutes ensured that the whole team was aligned on priorities and deadlines as well as holding people accountable and reducing the risk of miscommunication.
 
 \begin{thebibliography}{99}
+\footnotesize
 
+\bibitem{Statista}
+Statista, "Global forklift truck market volume from 2018 to 2022"
+\textit{https://www.statista.com/}
+Avaliable at:
+https://www.statista.com/statistics/1451892/global-forklift-truck-market-volume
+(accessed Dec. 05, 2024)
 \bibitem{MathWorks}
 MathWorks, “What Is SLAM (Simultaneous Localization and Mapping) – MATLAB \& Simulink,” \textit{uk.mathworks.com}.  
 Available at: \url{https://uk.mathworks.com/discovery/slam.html} (accessed Nov. 20, 2024).
@@ -482,22 +487,18 @@ Available at: \url{https://www.grandviewresearch.com/industry-analysis/automated
 
 \bibitem{eco2022} S. Co, ``We use ECO-FRIENDLY production techniques and technology,'' \textit{ENJOYING GO}, Sep. 21, 2022. [Online]. Available: \url{https://www.enjoycaster.com/en/solutions/product/eco-friendly-production}. [Accessed: Nov. 25, 2024].
 
-\bibitem{brake2021} ``The Future Of Tires: Sustainable, Airless \& Connected,'' \textit{Brake \& Front End}, 2021. [Online]. Available: \url{https://www.brakeandfrontend.com/the-future-of-tires-sustainable-airless-connected/}. [Accessed: Nov. 21, 2024].
-
-
-\bibitem{roos2012} D. Roos, ``5 Green Methods of Transporting Goods,'' \textit{HowStuffWorks}, Aug. 29, 2012. [Online]. Available: \url{https://science.howstuffworks.com/environmental/green-science/5-green-methods-transporting-goods.htm}. [Accessed: Nov. 25, 2024].
-
-\bibitem{ashmore2024} J. Ashmore, ``Container Operator BG Freight Line Launches Greenest Newbuild Vessels to Drive Sustainability,'' \textit{Afloat.ie}, May 08, 2024. [Online]. Available: \url{https://afloat.ie/port-news/port-and-shipping-news/item/63086-bg-freight-line-launches-new-vessels-to-drive-sustainability}. [Accessed: Nov. 25, 2024].
-
+\bibitem{ImperialTyres} 
+``How is the tyre industry becoming more sustainable?,'' \textit{Imperial Tyres}, 2024. [Online]. Available: \url{https://www.imperialtyres.co.uk/blog/how-is-the-tyre-industry-becoming-more-sustainable/}. [Accessed: Nov. 21, 2024]
 
 \bibitem{P. Hinz}
 P. Hinz, “How Much Electricity does a Forklift Use per Hour?,” Adaptalift, Sep. 2021. \url{https://www.adaptalift.com.au/blog/how-much-electricity-does-a-forklift-use-per-hour }(accessed Nov. 25, 2024).
 
  \bibitem{mileway_hurworth_2024}
 Mileway, “Hurworth Road, Newton Aycliffe Industrial Estate,” \url{https://mileway.com/properties/gb/portfolio/hurworth-road-newton-aycliffe-industrial-estate/} (accessed Dec. 2, 2024).
+ 
+\bibitem{Pastor-Tella2024}
+A. Pastor-Tella, ``AGV Cost Whitepaper,'' \textit{Wiferion}, 2024. Available: \url{https://outlook.office365.com/mail/id/AAQkADQ4MWIzM2EyLWQ1MTUtNGY5Ni04OWJhLWZjZDc0MDM5MTczYQAQAA1BfmZRJjlAknOSshQGypA%3D/sxs/AAMkADQ4MWIzM2EyLWQ1MTUtNGY5Ni04OWJhLWZjZDc0MDM5MTczYQBGAAAAAAA82oxQ1EQrR5h73Xq830VeBwBsJyu3A%2BNJQbAH2RRo67L8AAAAAAEMAABsJyu3A%2BNJQbAH2RRo67L8AAE1CmVAAAABEgAQAIuw1RKsTxlAt6tpt4BAJwE%3D}.
 
- \bibitem{Pastor-Tella2024}
-A. Pastor-Tella, "AGV Cost Whitepaper" 
 
 
 
@@ -554,8 +555,10 @@ Crown Equipment Corporation, \textit{Achieving Sustained Automated Forklift Perf
 % LISTS OF FIGURES AND TABLES
 % -------------------------------------------------------------
 \section{Appendices}
-\listoffigures                                                % Add list of figures
-\listoftables                                                 % Add list of tables
+\renewcommand{\listfigurename}{Figures}
+\renewcommand{\listtablename}{Tables}
+\listoffigures                                         % Add list of figures
+\listoftables                                        % Add list of tables
 
 % -------------------------------------------------------------
 % WORD COUNT OUTPUT
