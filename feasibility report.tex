@@ -2,6 +2,7 @@
 \setlength{\headheight}{14.5pt}
 \addtolength{\topmargin}{-2.5pt}
 
+\usepackage{cite}
 \usepackage{pgfplots} % Add this line to include the pgfplots package
 \usepackage{amsmath}
 \usepackage{geometry}
@@ -16,6 +17,7 @@
 \usepackage{wrapfig}
 \usepackage{placeins}
 \usepackage{float}
+\usepackage{amsmath}
  
 
 
@@ -38,13 +40,18 @@
 \geometry{a4paper, margin=0.7in }
 \setlength{\parindent}{0pt}
 \setstretch{1.5}
+\headsep = 3pt %Move text closer to header
 \usepackage{setspace}
 % Header and Footer
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{} % Clear all header and footer fields
 \fancyhead[L]{\textbf{19-AIBM4}} % Top-left text
-\fancyhead[C]{\rule{\textwidth}{0.5pt}} % Top horizontal line
+
+\renewcommand{\headrule}{\vspace{1pt}\hrule height 0.5pt} %Headrule spacing
+
+% Optional: Adjust header line thickness if needed
+\renewcommand{\headrulewidth}{0.5pt} % Thickness of the header line
 
 % Combine the page numbering and horizontal rule into one footer definition
 \fancyfoot[C]{\rule{\textwidth}{0.5pt}\\ Page \thepage\ of 15} % Bottom horizontal line with page number
@@ -55,10 +62,20 @@
   {\large\bfseries\sffamily\color{red}}
   {\thesection.}{1em}{}
 
+
 \titleformat{\subsection}[block]
   {\normalsize\bfseries\sffamily\color{red}}
   {\thesubsection}{1em}{}
  \pgfplotsset{compat=1.18} 
+
+ \titlespacing*{\subsection}{0pt}{1em}{0.2em}
+ \titlespacing*{\section}{0pt}{1em}{0.5em}
+\linespread{1.5}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+
+
+
 \begin{document}
 
 
@@ -118,8 +135,8 @@
 \section{Executive Summary}
 This feasibility report looks into the development of an Automated Material Mover (AIBM4), which aims to transport materials autonomously within a factory environment. This would eliminate the need for manual handling of goods, improve productivity and ensure a safer and more sustainable working environment. 
 \par Through an iterative design process, we chose a three-wheeled automated forklift design that integrates differential steering around a central axle for maximum manoeuvrability and tape sensing technology for precise movement within a factory environment. To make this design contemporary and sustainable, the body and forks will be made out of steel due to its high reconcilability, while the castor wheel will be made from a pre-consumer nylon, and we will use airless tyres to improve durability and reduce waste.
-\par Engineering calculations validate are designs structural integrity and feasibility as well as ensuring compliance with ISO 3691-4  standards. An in-depth cost analysis demonstrates that this automated guided vehicles (AGVs) are financially viable over conventional manual forklifts, due to significant savings in labour and operating costs over time. A break even analysis determines that only 39 units need to be sold to generate a profit, this seems very achievable.
-\par An adaptable factory layout design has been included which has been optimised for AGV operation, however the material mover has been designed to fit into the majority of modern-day factories. We have also conducted a risk assessment to mitigate any risks as well as created a Gantt chart which to determine that the design process will be finished by the end of March 2025.
+\par Engineering calculations validate the design's structural integrity and feasibility as well as ensuring compliance with ISO 3691-4  standards. An in-depth cost analysis demonstrates that this automated guided vehicles (AGVs) are financially viable over conventional manual forklifts, due to significant savings in labour and operating costs over time. A break even analysis determines that only 39 units need to be sold to generate a profit, this seems very achievable.
+\par An adaptable factory layout design has been included which has been optimised for AGV operation, however the material mover has been designed to fit into the majority of modern-day factories. We have also conducted a risk assessment to mitigate any risks as well as created a Gantt chart which determines that the design process will be finished by the end of March 2025.
 \par This report demonstrates the technical, economic and environmental upper hand that an automated material mover can be provide in a modern factory setting.
 
 \section{Introduction}
@@ -131,7 +148,7 @@ Efficient material handling is essential in modern manufacturing, but convention
 Manual labour and forklifts have several key issues within factory environments:
 
 \begin{itemize}
-    \item \textbf{Inefficiency:} Human workers require regular breaks, reducing productivity
+    \item \textbf{Inefficiency:} Human workers require regular breaks, reducing productivity.
     \item \textbf{Safety concerns:} Human error can lead to an increased likelihood of an accident as well as a higher chance of injuries.
     \item \textbf{Cost:} Cost of labour is very large, and multiple shifts necessitates additional hiring costs.
     \item \textbf{Reliability:} Human error can lead to materials being moved to the wrong locations.
@@ -237,118 +254,269 @@ Ease of Maintenance    & High               & Low                 & Low         
  
 \section{Chosen Solution}
 \begin{figure}[ht]
-
     \centering
-    \begin{minipage}[b]{0.3\linewidth}
+    \begin{minipage}[t]{0.27\textwidth}
+        \vspace{0pt} 
         \centering
-        \includegraphics[width=.8\linewidth]{finaldesign1rb.png}  
+        \includegraphics[width=\linewidth]{finaldesign1rb.png}  
+        \vspace{-15pt}
         \caption{Final design}
         \label{fig:x}
     \end{minipage}%
-    
-    \begin{minipage}[b]{0.7\linewidth}
-    \smallskip
-        The initial design that was chosen was Concept one, with some changes to improve performance. For greater manoeuvrability, a counterweight design was chosen, removing the frontmost wheels to allow the lifter to rotate about its centre.In order to improve sustainability, the body and forks are likely to be made from steel because it has the highest recycling rate among all materials used in construction and engineering \cite{baker2023}. The castor wheels can be made of high-quality pre-consumer nylon (from the waste of polyester production) \cite{eco2022} and the drive wheels can be airless tires, as it reduces the amount of rubber that goes into landfills and improves fuel efficiency \cite{ImperialTyres}. The design will be guided by two magnetic tape sensors which can follow a line of magnetic tape on the floor.
+    \hfill
+    \begin{minipage}[t]{0.68\textwidth}
+        \vspace{0pt}
+        The initial design that was chosen was Concept one, with some changes to improve performance. For greater manoeuvrability, a counterweight design was chosen, removing the frontmost wheels to allow the lifter to rotate about its centre. In order to improve sustainability, the body and forks are likely to be made from steel because it has the highest recycling rate among all materials used in construction and engineering \cite{baker2023}. The castor wheels can be made of high-quality pre-consumer nylon (from the waste of polyester production) \cite{eco2022} and the drive wheels can be airless tires, as this would reduce the amount of rubber that goes into landfill and improve fuel efficiency \cite{ImperialTyres}. The design will be guided by two magnetic tape sensors which can follow a line of magnetic tape on the floor.
     \end{minipage}
 \end{figure}
 
 
 
+
 \subsection {Stress and Deflection Calculations}
-Assuming the fork is a beam of uniform cross section fixed at the left end to the forklift, it can be modelled as shown in {figure 6}.
-\begin{figure} [H]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{fork as a beam diagram.png}
-    \caption{Diagram showing the force diagram of a singular fork.}
-    \label{fig:x}
+    \begin{minipage}[t]{0.5\textwidth}
+        \vspace{0pt}
+        \linespread{1.5}
+        Assuming the fork is a beam of uniform cross section fixed at the left end to the forklift, it can be modelled as shown in Figure \ref{fig:x}. This calculation uses a factor of safety of three for the maximum load, as specified by ISO 2330 for the prototyping of forklift forks \cite{iso2330}.
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \vspace{-32pt} 
+        \centering
+        \includegraphics[width=\linewidth]{fork as a beam diagram.png}
+        \vspace{-40pt}
+        \caption{Diagram showing the force diagram of a singular fork.}
+        \label{fig:x}
+    \end{minipage}
 \end{figure}
 
-This calculation uses a factor of safety of three for the maximum load, as specified by ISO 2330 for the prototyping of forklift forks \cite{iso2330}.
 
 Using Macauley's method, the equation for the deflection of a steel-304 fork with \( E = 190 \, \text{GPa} \), height \( h = 40 \, \text{mm} \), and width \( b = 100 \, \text{mm} \cite{ForkDimensions} \) is given by:
 
 
-
-
-
-
+\vspace{-20pt}
 \begin{equation}
    \nu = \frac{3}{304000} \left( \frac{-16186.5}{2}x^2 + \frac{29430}{6}x^3 - \frac{26755}{24}x^4 \right)
 \end{equation}
+\vspace{-20pt}
+
 Therefore maximum deflection is at \(x = 1.1 \, \text{m}\), which is \(\nu = -4.83 \, \text{cm}\).
 For fatigue, following ISO-2330 standards a cyclic stress amplitude of 1.655MPa was obtained using equation (2).
+
+\vspace{-20pt}
 \begin{equation}
    \text{Cyclic Stress Amplitude} = \left (\frac{Force}{Area} \right)
 \end{equation}
+\vspace{-20pt}
+
 The obtained value is smaller than the minimum fatigue limit of \(175 \text{MPa}\) so no cracking due to fatigue will occur.
+
+
 \subsection{Centre of Mass calculations}
-In a counterbalance forklift design, the centre of mass is kept between the front and rear wheels through a large counterbalance positioned far back. Normally the mass of the battery contributes to this. In order to determine whether a design  is  safe from tipping, several calculations must be performed.
-\begin{figure} [H]
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{Tipping Calculations.png}
-    \caption{Diagram showing mass distribution in a counterbalance forklift, and free body diagram of the same}
-    
-    
+    \begin{minipage}[t]{0.57\textwidth}
+        \vspace{0pt} % Align top of this minipage with the other
+        In a counterbalance forklift design, tipping is avoided by using a counterbalance to shift the centre of mass to in between the wheels. The mover will tip about the drive wheel when the force through the rear wheel \( F_r = 0 \) and the load moment is greater than the counterbalance moment. The wheelbase is the distance between the drive and rear wheel, and \( Y \) shows the distance from the drive wheel to the centre of mass of the forklift. 
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.38\textwidth}
+        \vspace{-30pt} 
+        \centering
+        \includegraphics[width=\linewidth]{Tipping Calculations 3.png}
+        \vspace{-30pt}
+        \caption{Diagram of forklift mass distribution, and free body diagram}
+        \label{fig:x}
+    \end{minipage}
 \end{figure}
-The mover will tip about the drive wheel when the force through the rear wheel  \( F_r = 0 \) and the load moment is greater than the counterbalance moment. 
-Taking moments about the drive wheel gives the following equation:
+The weight of the whole forklift is shown as \(W_F\) and the weight of the load is \(W_L\) acting at a distance equal to the load centre \(LC\) from the drive wheel. Taking moments about the drive wheel gives the following equation:
+\vspace{-10pt}
 \begin{equation}
-    M_{\text{load}} = M_{\text{counterbalance}}
+    W_{\text{F}}Ym = W_{\text{L(tip)}}LCm
 \end{equation}
+\vspace{-35pt}
+
+The Toyota 06-8FG20F \cite{Toyota} offers an example of a similar manual forklift with the same load ratings as our design. In this model, the counterweight has a mass of 4318kg, which gives a load tipping weight of 3750 kg, and a factor of safety against tipping of 1.875. This gives us an aim for a value that ensures our forklift is safe, but does not compromise efficiency through unnecessary added weight. Shifting the  counterweight further back would be a good way of reducing the necessary counterweight mass. Further safety features such as load sensors would further increase the safety of our design.
 
 \subsection{Motor Torque Calculation}
 
-The total drive force the vehicle needs is the sum of rolling resistance, air resistance, other smaller resistive forces such as resistance in the bearings and motor, and accelerating force. For the purposes of these calculations, the vehicle is assumed to need to reach a top speed of $8mph$ ($3.58ms^{-1}$), in a time of up to $5s$, and since the speed is relativity low, air resistance is assumed to be negligible. Rolling resistance, $F_{rr}$, is given by:
-
+The total drive force the vehicle needs is the sum of rolling resistance, air resistance, other smaller resistive forces such as resistance in the bearings and motor, and accelerating force. For the purposes of these calculations, the vehicle is assumed to need to reach a top speed of $8mph$ ($3.58ms^{-1}$), in a time of up to $5s$, similar other forklifts[SRC], and since the speed is relativity low, air resistance is assumed to be negligible. Rolling resistance, $F_{rr}$, is given by:
+\vspace{-20pt}
 \begin{equation}
-    F_{rr} = C_{rr} m g
+    F_{rr} = C_{rr} m g = 0.015 \times 5000 \times 9.81 =  735.8 \, \text{N}
+\end{equation}
+\vspace{-40pt}
+
+Where \( C_{rr} \) = Coefficient of Rolling Resistance, taken for tyres on concrete to be 0.015[SRC] \cite{RollingResistance}, \( m \) = Mass of the vehicle, taken to be \( 5000 \, \text{kg} \) as previously calculated[SRC], and \( g \) = Acceleration due to gravity, taken to be \( 9.81 \, \text{ms}^{-2} \). The accelerating force, \( F_a \), is given by:
+\vspace{-20pt}
+\begin{equation}
+    F_a = m\frac{\Delta v}{\Delta t} = 5000\times \frac{3.58}{5} = 3580 \, \text{N}
 \end{equation}
 
 
-
-Where \( C_{rr} \) = Coefficient of Rolling Resistance, taken for tyres on concrete to be 0.015 \cite{RollingResistance}, \( m \) = Mass of the vehicle, taken to be \( 5000 \, \text{kg} \) \cite{VehicleMass}, and \( g \) = Acceleration due to gravity, taken to be \( 9.81 \, \text{ms}^{-2} \). Therefore,
-
+Where $\Delta v$ = Required change in speed, taken as the top speed of $3.58ms^{-1}$, and $\Delta t$ = Time to execute required speed change, taken as $5s$. And so the total drive force required is the sum of these forces,
+\vspace{-5pt}
 \begin{equation}
-    F_{rr} = 0.015 \times 5000 \times 9.81
+    F_d = F_{rr} + F_a = 735.8 \, + \, 3580 = 4315.8 \, \text{N}
+\end{equation}
+\vspace{-40pt}
+
+The motor torque required to produce this force, $T_m$, is given by:
+\vspace{-20pt}
+\begin{equation}
+    T_m = F_d \times R_w \times RF = 4315.8 \times 0.289 \times 1.15 = 2.228 \, \text{kNm}
+\end{equation}
+\vspace{-40pt}
+
+Where $R_w$ = Wheel radius, valued at $0.289m$, and RF = Resistance Factor, which accounts for smaller resistances such as those in the bearing and the motor, and is taken as 1.15. Therefore, if each motor is picked to have 2.5kNm of torque, the total drive torque will be 5kNm - over twice what is required, ensuring that the vehicle has sufficient torque.
+
+
+
+
+
+
+\subsection {Hand Calculations}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.5\textwidth}
+        \vspace{0pt}
+        \linespread{1.5}
+        Assuming the fork is a beam of uniform cross section fixed at the left end to the forklift, it can be modelled as shown in Figure \ref{fig:x}. This calculation uses a factor of safety of three for the maximum load, as specified by ISO 2330 for the prototyping of forklift forks \cite{iso2330}.
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \vspace{-32pt} 
+        \centering
+        \includegraphics[width=\linewidth]{fork as a beam diagram.png}
+        \vspace{-40pt}
+        \caption{Diagram showing the force diagram of a singular fork.}
+        \label{fig:x}
+    \end{minipage}
+\end{figure}
+
+
+Using Macauley's method, the equation for the deflection of a EN19 steel fork with \( E = 200 \, \text{GPa} \), height \( h = 40 \, \text{mm} \), and width \( b = 100 \, \text{mm} \cite{ForkDimensions} \) is given by:
+
+\vspace{-20pt}
+\begin{equation}
+   \nu = \frac{3}{320000} \left( \frac{-16186.5}{2}x^2 + \frac{29430}{6}x^3 - \frac{26755}{24}x^4 \right)
+\end{equation}
+\vspace{-20pt}
+
+Therefore the maximum deflection, at the furthest point from the fork's support, \(x = 1.1 \, \text{m}\), is \(\nu = -45.9mm \, \text{mm}\).
+For fatigue, following ISO-2330 standards a cyclic stress amplitude of 1.655MPa was obtained using equation (2).
+
+\vspace{-20pt}
+\begin{equation}
+   \text{Cyclic Stress Amplitude} = \left (\frac{Force}{Area} \right)
+\end{equation}
+\vspace{-20pt}
+
+The obtained value is smaller than the minimum fatigue limit of \(175 \text{MPa}\) so no cracking due to fatigue will occur.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.57\textwidth}
+        \vspace{0pt} % Align top of this minipage with the other
+        In a counterbalance forklift design, tipping is avoided by using a counterbalance to shift the centre of mass behind the drive wheels. The mover will tip about the drive wheel when the force through the the load moment is greater than the counterbalance moment. The wheelbase is the distance between the drive and rear wheel, and \( Y \) shows the distance from the drive wheel to the centre of mass of the forklift. 
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.38\textwidth}
+        \vspace{-30pt} 
+        \centering
+        \includegraphics[width=\linewidth]{Tipping Calculations 3.png}
+        \vspace{-30pt}
+        \caption{Diagram of forklift mass distribution, and free body diagram}
+        \label{fig:x}
+    \end{minipage}
+\end{figure}
+The weight of the whole forklift is shown as \(W_F\) and the weight of the load is \(W_L\) acting at a distance equal to the load centre \(LC\) from the drive wheel. Knowing that at the point of tipping, $F_r = 0N$ and taking moments about the drive wheel:
+\vspace{-10pt}
+\begin{equation}
+    W_{\text{F}}Y = W_{\text{L(tip)}}LC
+\end{equation}
+\vspace{-35pt}
+
+Not a fan of m and Cm not being units when distance is involved, kinda confusing
+
+The Toyota 06-8FG20F \cite{Toyota} offers an example of a similar manual forklift with the same load ratings as our design. In this model, the counterweight has a mass of 4318kg, which gives a load tipping weight of 3750 kg, and a factor of safety against tipping of 1.875. Our design takes $LCm$ as $0.967m$, $Ym$ as $1m$, $W_L$ as $3750gN$ (a 2 tonne load multiplied by the 1.875 factor of safety), and so determines that:
+
+\vspace{-10pt}
+\begin{equation}
+    W_{\text{F}} = \frac{W_{\text{L(tip)}}LCm}{Ym} = \frac{3750g \times 0.967}{1} = 3626.25gN
+\end{equation}
+\vspace{-35pt}
+
+This means a counterweight of 3626kg - similar to the value Toyota use. For the sake of saftey and simplicity in further calculations, this value will be rounded up to 4000kg. This gives us an aim for a value that ensures our forklift is safe, but does not compromise efficiency through unnecessary added weight. Shifting the  counterweight further back would be a good way of reducing the necessary counterweight mass. Integrating load sensors would ensure that the 2 tonne limit is not exceeded, preventing damage to the forklift.
+
+The weight of the forklift is an important factor in the driving force that it requires. The total drive force the vehicle needs is the sum of rolling resistance, air resistance, other smaller resistive forces such as resistance in the bearings and motor, and accelerating force. For the purposes of these calculations, the vehicle is assumed to need to reach a top speed of $8mph$ ($3.58ms^{-1}$), in a time of up to $3s$, similar other forklifts[SRC], and since the speed is relativity low, air resistance is assumed to be negligible. Rolling resistance, $F_{rr}$, is given by:
+\vspace{-20pt}
+\begin{equation}
+    F_{rr} = C_{rr} m g = 0.015 \times 6000 \times 9.81 =  882.9 \, \text{N}
+\end{equation}
+%\vspace{-40pt}
+
+Where \( C_{rr} \) = Coefficient of Rolling Resistance, taken for tyres on concrete to be 0.015[SRC] \cite{RollingResistance}, \( m \) = Mass of the vehicle, taken to be \( 6000 \, \text{kg} \) as previously calculated plus the load weight[SRC], and \( g \) = Acceleration due to gravity, taken to be \( 9.81 \, \text{ms}^{-2} \). The accelerating force, \( F_a \), is given by:
+\vspace{-20pt}
+\begin{equation}
+    F_a = m\frac{\Delta v}{\Delta t} = 6000\times \frac{3.58}{3} = 7160 \, \text{N}
 \end{equation}
 
+
+Where $\Delta v$ = Required change in speed, taken as the top speed of $3.58ms^{-1}$, and $\Delta t$ = Time to execute required speed change, taken as $5s$. And so the total drive force required is the sum of these forces,
+\vspace{-5pt}
 \begin{equation}
-    F_{rr} = 735.8 \, \text{N}
+    F_d = F_{rr} + F_a = 882.9 \, + \, 7160 = 8042.9 \, \text{N}
 \end{equation}
+\vspace{-40pt}
 
-The accelerating force, \( F_a \), is given by:
-
+The motor torque required to produce this force, $T_m$, is given by:
+\vspace{-20pt}
 \begin{equation}
-    F_a = \frac{m \Delta v}{t}
+    T_m = F_d \times R_w \times RF = 8042.9 \times 0.289 \times 1.15 = 2.673 \, \text{kNm}
 \end{equation}
+\vspace{-40pt}
 
-
-Where $m$ = Mass of the vehicle, taken to be $5000kg$, and $a$ = Required acceleration, 
+Where $R_w$ = Wheel radius, valued at $0.289m$, and RF = Resistance Factor, which accounts for smaller resistances such as those in the bearing and the motor, and is taken as 1.15. Therefore, if each motor is picked to have 2.5kNm of torque, the total drive torque will be 5kNm - roughly twice what is required, ensuring that the vehicle has sufficient torque.
 
 \subsection{Expected Cost}
 
-{The estimated cost of the product \cite{P. Hinz} is £60,000, and this covers:}
-\begin{itemize}
-    \item All the hardware for the autonomous material mover 
-    \item All of the software acquisition and development for navigation,  and task automation.
-    \item The implementation of the system into a conventional factory; however, this will likely differ on a site-to-site basis.
-\end{itemize}
-
-\begin{table}[h!]
+\begin{table}[H]
     \centering
-    \begin{tabular}{|l|r|}
-        \hline
-        \textbf{Cost Item}          & \textbf{Amount (£)} \\ \hline
-        Labour Costs                 & 18,000.00           \\ \hline
-        Material Costs              & 15,099.12           \\ \hline
-        Overheads                   & 10,000.00           \\ \hline
-        Software and Simulation     & 2,000.00            \\ \hline
-        Contingency                 & 4,900.88            \\ \hline
-        \textbf{Total Estimated Cost} & \textbf{60,000.00}  \\ \hline
-    \end{tabular}
-    \caption{Breakdown of Expected Costs for the Autonomous Material Mover}
-    \label{tab:expected_costs}
+    \begin{minipage}[t]{0.5\textwidth}
+        \setlength{\parskip}{0pt} % No extra space between paragraphs
+        \vspace{-10pt}
+        The estimated cost of the product \cite{P. Hinz} is £60,000, and this covers:
+        \begin{itemize}
+        \setlength{\itemsep}{1pt}
+            \item All the hardware for the autonomous material mover
+            \item All of the software acquisition and development for navigation, and task automation.
+            \item The implementation of the system into a conventional factory; however, this will likely differ on a site-to-site basis.
+        \end{itemize}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \vspace{-10pt}
+        \begin{tabular}{|l|r|}
+            \hline
+            \textbf{Cost Item}          & \textbf{Amount (£)} \\ \hline
+            Labour Costs                 & 18,000.00           \\ \hline
+            Material Costs              & 15,099.12           \\ \hline
+            Overheads                   & 10,000.00           \\ \hline
+            Software and Simulation     & 2,000.00            \\ \hline
+            Contingency                 & 4,900.88            \\ \hline
+            \textbf{Total Estimated Cost} & \textbf{60,000.00}  \\ \hline
+        \end{tabular}
+        \vspace{1pt} 
+        \caption{Breakdown of Expected Costs for the Autonomous Material Mover}
+        \label{tab:expected_costs}
+    \end{minipage}
 \end{table}
+
 
 
 \begin{figure}[ht]
@@ -396,29 +564,20 @@ Taking these things into consideration, the following table assumes a factory us
 \end{table}
 
 \FloatBarrier
-Cost per unit taken as £60,000 for an AGV, compared with £20,000 for a manual forklift. From the graph we can see that after 420 days of operation the three AGV forklifts become more economical in comparison to the two manually operated forklifts. 
+Cost per unit taken as £60,000 for an AGV, compared with £20,000 for a manual forklift. From the graph in Figure 8 we can see that after 420 days of operation the three AGV forklifts become more economical in comparison to the two manually operated forklifts. 
 \FloatBarrier
 \subsection{Factory Layout}
 
  \FloatBarrier
 A CAD factory layout has been produced using information from EG Propertylink listing for Unit 5, Hurworth Road, Aycliffe Business Park \cite{mileway_hurworth_2024} as an example. This layout makes use of a U shaped path for the movers, with  machines along either side of the path. The path is marked with magnetic tape which the movers can detect and follow using sensors. At each end  of the path will be the goods in and goods out areas, where the movers will collect supplies for the machines and deposit finished products respectively. In these areas there will also be charging stations, positioned out of the way to prevent disruption.
 \begin{figure}[ht]
-    \centering
-    \begin{minipage}{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{factory layout1.png} % Replace with your Blender animation image
-        \caption{Blender Animation}
-        \label{fig:blender_animation}
 
-        
-    \end{minipage}
-    \hspace{0.05\linewidth}
-    \begin{minipage}{0.45\linewidth}
+
         \centering
-        \includegraphics[width=\linewidth]{factory layout dimension.png}
+        \includegraphics[width=0.8\linewidth]{Factory Layout Louis Big Text.png}
         \caption{Factory design layout}
         \label{fig:factory_layout}
-    \end{minipage}
+
 \end{figure}
 \FloatBarrier
  
@@ -439,7 +598,10 @@ A CAD factory layout has been produced using information from EG Propertylink li
 \end{figure}
 \FloatBarrier
 
- 
+\section{Recommendations/Conclusion}
+Based off our initial studies, the URS created seems to be largely appropriate for this project however, we may need to make some minor refinements to better align it with the enhanced manoeuvrability and sustainability focus of our chosen design. This project should proceed as planned based off the information given in this report covering technical feasibility, cost effectiveness and environmental advantages of the proposed three-wheeled automated forklift. Our analysis confirm that the autonomous material mover will be able to provide not only an economical but also a sustainable solution for warehouse operations in the future, with a breakeven point compared to conventional forklifts of only 420 days after implementation. This design effectively balances performance, cost and sustainability making it the prefect choice for modern industrial automation needs.
+
+\FloatBarrier
 
 % -------------------------------------------------------------
 % 6. Project Schedule
@@ -465,18 +627,20 @@ In order to plan out the schedule throughout the project, a Gantt Chart was crea
     \end{minipage}
 \end{figure}
 The planning Gantt Chart, figure \ref{fig:y}, showcases the weekly hours expected to be put into tasks and helps to ensure a balanced workload throughout the project. It also allows foresight for deadlines and other departmental commitments so that the workload can be planned around these accordingly. The majority of first term was planned around choosing a feasible design for the material mover and the research and drawings for this, as well as the factory layout the mover would work in. This provides a strong basis for the remainder of the project which focuses on CAD, software proof of concept and other simulations. This plan also allows for scope creep, having 135 contingency hours, and so means the project has ample time to be complete. 
-
+\FloatBarrier
 \begin{figure}[h!]
  \subsection{Meeting Minutes}
     \includegraphics[width=1\textwidth]{HalloweenMinutes1.png}
     \caption{Meeting minutes from 31/10/24}
     \label{fig:x}
 \end{figure}
-  
+  \FloatBarrier
 Meeting minutes are a core component for the project management of this process. They are a detailed record of all discussions, decisions and assigned tasks. They are taken by the secretary every meeting, which is at least twice a week ensuring consistent and efficient collaboration. This ensures that all topics of discussion are covered and that appropriate tasks are assigned regularly, as well as allowing absent team members to catch up. Maintaining detailed minutes ensured that the whole team was aligned on priorities and deadlines as well as holding people accountable and reducing the risk of miscommunication.
+
 
 \begin{thebibliography}{99}
 \footnotesize
+\setlength{\baselineskip}{0.8\baselineskip}
 
 \bibitem{MathWorks}
 MathWorks, “What Is SLAM (Simultaneous Localization and Mapping) – MATLAB \& Simulink,” \textit{uk.mathworks.com}.  
@@ -534,7 +698,7 @@ P. Hinz, “How Much Electricity does a Forklift Use per Hour?,” Adaptalift, S
 Mileway, “Hurworth Road, Newton Aycliffe Industrial Estate,” \url{https://mileway.com/properties/gb/portfolio/hurworth-road-newton-aycliffe-industrial-estate/} (accessed Dec. 2, 2024).
  
 \bibitem{Pastor-Tella2024}
-A. Pastor-Tella, ``AGV Cost Whitepaper,'' \textit{Wiferion}, 2024. Available: \url{https://outlook.office365.com/mail/id/AAQkADQ4MWIzM2EyLWQ1MTUtNGY5Ni04OWJhLWZjZDc0MDM5MTczYQAQAA1BfmZRJjlAknOSshQGypA%3D/sxs/AAMkADQ4MWIzM2EyLWQ1MTUtNGY5Ni04OWJhLWZjZDc0MDM5MTczYQBGAAAAAAA82oxQ1EQrR5h73Xq830VeBwBsJyu3A%2BNJQbAH2RRo67L8AAAAAAEMAABsJyu3A%2BNJQbAH2RRo67L8AAE1CmVAAAABEgAQAIuw1RKsTxlAt6tpt4BAJwE%3D}.
+A. Pastor-Tella, ``AGV Cost Whitepaper,'' \textit{Wiferion}, 2024}.
 
 
 
@@ -548,6 +712,16 @@ AGV Network, \textit{Download Area}, 2024, \url{https://www.agvnetwork.com/downl
 \bibitem{roboteq2024}
 Roboteq, \textit{Ordering Online - Navigation Sensors}, 2024, \url{https://www.roboteq.com/ordering/ordering-online#navigation-sensors} (Accessed: December 6, 2024).
 
+\bibitem{Baker} Baker, T. (2023). 5 Reason Why Structural Steel is Such a Sustainable Material. [online] Available at: \url{https://www.bakersteeltrading.co.uk/is-structural-steel-sustainable/} (Accessed 21. Nov, 2024).
+
+\bibitem{Co} S. Co, “We use ECO-FRIENDLY production techniques and technology.,” ENJOYING GO, Sep. 21, 2022. Available at: \url{https://www.enjoycaster.com/en/solutions/product/eco-friendly-production} (Accessed Nov. 25, 2024).
+
+\bibitem{Brake} Brake \& Front End. (2021). The Future Of Tires: Sustainable, Airless \& Connected. [online] Available at: \url{https://www.brakeandfrontend.com/the-future-of-tires-sustainable-airless-connected/} (Accessed 21. Nov, 2024).
+
+\bibitem{Roos} D. Roos, “5 Green Methods of Transporting Goods,” HowStuffWorks, Aug. 29, 2012. Available at: \url{https://science.howstuffworks.com/environmental/green-science/5-green-methods-transporting-goods.htm} (Accessed Nov. 25, 2024).
+
+\bibitem{Ashmore} J. Ashmore, “Container Operator BG Freight Line Launches Greenest Newbuild Vessels to Drive Sustainability,” Afloat.ie, May 08, 2024. Available at: \url{https://afloat.ie/port-news/port-and-shipping-news/item/63086-bg-freight-line-launches-new-vessels-to-drive-sustainability} (Accessed Nov. 25, 2024).
+\bibitem{Toyota} Toyota Material Handling Europe, "Engine powered forklift datasheet", April 25, 2023. Available at: \url{https://media.toyota-forklifts.eu/published/22508_Original%20document_toyota%20mh.pdf} (Accessed Nov. 25, 2024).
 
  
 
@@ -564,13 +738,6 @@ Roboteq, \textit{Ordering Online - Navigation Sensors}, 2024, \url{https://www.r
 \listoffigures                                         % Add list of figures
 \listoftables                                        % Add list of tables
 
-% -------------------------------------------------------------
-% WORD COUNT OUTPUT
 
-
-% 8. Appendices
-% -------------------------------------------------------------
-
-\hl{Additional charts, data, or images can be included here.}
 
 \end{document}
