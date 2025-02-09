@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,fit}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    auto,
+    block/.style={
+        rectangle,
+        draw,
+        text width=2.2cm,
+        text centered,
+        minimum height=1cm,
+        inner sep=6pt
+    },
+    motor/.style={
+        circle,
+        draw,
+        minimum size=1cm,
+        inner sep=2pt
+    },
+    line/.style={draw, -latex'}
+]
+
+% Define the blocks with more spacing
+\node [block] (sensor) {Sensor Array};
+\node [block, right=1.5cm of sensor] (comparator) {Comparator\\Lm324};
+\node [block, right=1.5cm of comparator] (micro) {Microcontroller\\ATmega16};
+\node [block, right=1.5cm of micro] (driver) {Motor Driver\\L298};
+
+% Add motors with better positioning
+\node [motor, above=0.8cm of driver] (motor1) {Motor 1};
+\node [motor, below=0.8cm of driver] (motor2) {Motor 2};
+
+% Draw the connections
+\draw [line] (sensor) -- node[above, text width=2cm, align=center] {Analog Signals} (comparator);
+\draw [line] (comparator) -- node[above] {Binary Data} (micro);
+\draw [line] (micro) -- (driver);
+\draw [line] (driver) -- (motor1);
+\draw [line] (driver) -- (motor2);
+
+% Add the Analog Signals box with dashed lines
+\draw [dashed] ($(sensor.north west)+(-0.2,0.3)$) rectangle ($(micro.south east)+(0.2,-0.3)$);
+\node [above] at ($(comparator.north)+(0,0.2)$) {Analog Signals};
+
+% Add ADC label above microcontroller
+\node [above=0.1cm] at (micro.north) {ADC};
+
+\end{tikzpicture}
+
+\end{document}

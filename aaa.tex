@@ -1,0 +1,127 @@
+\documentclass[landscape]{article}
+\usepackage[a4paper, margin=1cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,fit,backgrounds,decorations.pathreplacing}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    auto,
+    block/.style={
+        rectangle,
+        draw=blue,
+        thick,
+        text width=3cm,
+        minimum height=1.2cm,
+        align=center,
+        rounded corners=2pt,
+        fill=white
+    },
+    smallblock/.style={
+        rectangle,
+        draw=blue,
+        thick,
+        text width=2cm,
+        minimum height=0.8cm,
+        align=center,
+        fill=white
+    },
+    line/.style={draw, thick, -latex', blue},
+    dashed line/.style={draw, thick, dashed, -latex', blue},
+    box/.style={
+        rectangle,
+        draw=gray,
+        dashed,
+        inner sep=0.5cm
+    }
+]
+
+% Title
+\node [font=\LARGE\bfseries] at (0,3) {Forklift Control System Architecture};
+
+% Main Control System Box
+\begin{scope}[on background layer]
+    \node[box, fit={($(power)+(0,-1)$) ($(power)+(12,-6)$)}] (controlbox) {};
+    \node[above] at (controlbox.north) {\textbf{Main Control System}};
+\end{scope}
+
+% Power Management
+\node [block] (power) at (0,0) {POWER MAN-\\AGEMENT\\SYSTEM};
+
+% Main components with increased spacing
+\node [block, below=2cm of power] (sense) {SENSE\\
+    \footnotesize
+    - Nav Sensors\\
+    - Safety Sensors\\
+    - Fork Sensors\\
+    - Motor Feedback\\
+    - Position Detection};
+
+\node [block, right=4cm of sense] (understand) {UNDERSTAND\\
+    \footnotesize
+    - Raspberry Pi\\
+    - RoboteQ Ctrl\\
+    - SICK Flexi\\
+    - Soft Safety\\
+    - Signal Processing};
+
+\node [block, right=4cm of understand] (act) {ACT\\
+    \footnotesize
+    - Drive System\\
+    - Lift System\\
+    - Safety Outputs\\
+    - Emergency Stop\\
+    - Warning Systems};
+
+% Interface and Communication
+\node [block, below=3cm of sense] (ui) {USER IN-\\TERFACE\\
+    \footnotesize
+    - Controls\\
+    - Displays\\
+    - Status Monitor\\
+    (Operators)};
+
+\node [block, below=3cm of act] (comm) {COMMUNICATION\\
+    \footnotesize
+    - Control Comms\\
+    - Safety Comms\\
+    - Remote Comms\\
+    - Network Protocol};
+
+% Additional small blocks for detailed systems
+\node [smallblock, below right=1cm and 1.5cm of understand] (safety) {\footnotesize Safety\\System};
+\node [smallblock, below left=1cm and 1.5cm of understand] (monitor) {\footnotesize System\\Monitor};
+
+% Connections
+\draw [line] (power) -- (sense);
+\draw [line] (sense) -- (understand);
+\draw [line] (understand) -- (act);
+\draw [dashed line] (sense) -- (ui);
+\draw [line] (ui) -- (comm);
+\draw [line] (act) -- (comm);
+\draw [dashed line] (understand) -- (safety);
+\draw [dashed line] (understand) -- (monitor);
+\draw [line] (safety) -| (comm);
+\draw [line] (monitor) -| (ui);
+
+% Feedback loops with curved arrows
+\draw [-latex', blue, thick] (act.north) to [out=150, in=30] (understand.north);
+\draw [-latex', blue, thick] (understand.south) to [out=240, in=300] (sense.south);
+
+% Labels
+\node [left=0.2cm of sense, font=\small] {Inputs};
+\node [right=0.2cm of act, font=\small] {Outputs};
+
+% Technical annotations
+\node [below right=0.2cm and 0.2cm of power, font=\footnotesize] {24V DC};
+\node [above right=0.2cm and 0.2cm of sense, font=\footnotesize] {Sensor Data};
+\node [above right=0.2cm and 0.2cm of understand, font=\footnotesize] {Control Logic};
+
+% Add data flow indicators
+\node [above=0.1cm of sense.north east, font=\footnotesize] {Data Flow};
+\node [above=0.1cm of understand.north east, font=\footnotesize] {Processing};
+\node [above=0.1cm of act.north east, font=\footnotesize] {Actions};
+
+\end{tikzpicture}
+
+\end{document}
